@@ -6,5 +6,5 @@ before do
 end
 
 get '/health-check' do
-  [{ message: 'Is alive!' }].to_json
+  [{ message: 'Is alive!', version: '1.0' }].to_json
 end
