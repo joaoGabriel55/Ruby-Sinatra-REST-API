@@ -32,7 +32,7 @@ jobs:
       - configure_bundler
       - run:
           name: Install bundle
-          command: bundle install
+          command: bundle install --binstubs
       - save_cache:
           key: rest_api-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
@@ -49,7 +49,7 @@ jobs:
       - run:
           name: Test API
           command: |
-            bundle exec rspec spec
+            rspec spec
 
 workflows:
   version: 2
