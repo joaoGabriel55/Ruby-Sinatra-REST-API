@@ -1,0 +1,46 @@
+version: 2.1
+
+executors:
+  default:
+    working_directory: ~/rest_api
+    docker:
+      - image: circleci/ruby:2.6.5
+
+commands:
+  configure_bundler:
+    description: Configure bundler
+    steps:
+      - run:
+          name: Configure bundler
+          command: |
+            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            source $BASH_ENV
+            gem install bundler
+
+jobs:
+  build:
+    executor: default
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - rest_api-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - rest_api-
+      - configure_bundler
+      - run:
+          name: Install bundle
+          command: bundle install
+      - save_cache:
+          key: rest_api-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - ./rest_api
+
+workflows:
+  version: 2
+  integration:
+    jobs:
+      - build
