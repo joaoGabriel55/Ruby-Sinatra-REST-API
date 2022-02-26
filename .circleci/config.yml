@@ -42,6 +42,7 @@ jobs:
   test:
     executor: default
     steps:
+      - checkout
       - run:
           name: Test API
           command: rspec spec/
