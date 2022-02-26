@@ -5,6 +5,8 @@ executors:
     working_directory: ~/rest_api
     docker:
       - image: circleci/ruby:2.6.5
+        environment:
+          APP_ENV: test
 
 commands:
   configure_bundler:
