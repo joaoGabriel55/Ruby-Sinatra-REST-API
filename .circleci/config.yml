@@ -21,6 +21,13 @@ commands:
             gem install bundler:2.1.4
             bundle -v
 
+  install_dependencies:
+    description: Install dependencies
+    steps:
+      - run:
+          name: Install bundle
+          command: bundle install --binstubs
+
 jobs:
   build:
     executor: default
@@ -31,9 +38,7 @@ jobs:
             - rest_api-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
             - rest_api-
       - configure_bundler
-      - run:
-          name: Install bundle
-          command: bundle install --binstubs
+      - install_dependencies
       - save_cache:
           key: rest_api-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
@@ -47,10 +52,11 @@ jobs:
     executor: default
     steps:
       - checkout
+      - configure_bundler
+      - install_dependencies
       - run:
           name: Test API
           command: |
-            bundle install --binstubs
             bundle exec rspec spec
 
 workflows:
