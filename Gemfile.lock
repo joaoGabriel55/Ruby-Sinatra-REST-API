@@ -34,7 +34,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler
+  bundler (~> 2.1.4)
   rack-test
   rspec
   sinatra
