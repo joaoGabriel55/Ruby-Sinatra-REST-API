@@ -47,7 +47,6 @@ jobs:
     executor: default
     steps:
       - checkout
-      - configure_bundler
       - run:
           name: Test API
           command: |
