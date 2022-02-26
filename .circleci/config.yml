@@ -47,9 +47,7 @@ jobs:
       - checkout
       - run:
           name: Test API
-          command: |
-            TESTFILES=$(circleci tests glob “spec/**/*_spec.rb” | circleci tests split)
-            bundle exec rspec — ${TESTFILES}
+          command: bundle exec rspec spec/
 
 workflows:
   version: 2
