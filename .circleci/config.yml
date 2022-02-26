@@ -51,3 +51,4 @@ workflows:
   integration:
     jobs:
       - build
+      - test
