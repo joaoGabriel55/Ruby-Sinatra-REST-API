@@ -43,8 +43,8 @@ jobs:
     executor: default
     steps:
       - run:
-        name: Test API
-        command: rspec spec/
+          name: Test API
+          command: rspec spec/
 
 workflows:
   version: 2
