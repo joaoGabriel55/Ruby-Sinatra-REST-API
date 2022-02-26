@@ -45,7 +45,7 @@ jobs:
       - checkout
       - run:
           name: Test API
-          command: ./rest_api rspec spec/
+          command: ~/rest_api rspec spec/
 
 workflows:
   version: 2
