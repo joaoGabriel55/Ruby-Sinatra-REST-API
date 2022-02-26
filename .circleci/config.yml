@@ -39,6 +39,13 @@ jobs:
           paths:
             - ./rest_api
 
+  test:
+    executor: default
+    steps:
+      - run:
+        name: Test API
+        command: rspec spec/
+
 workflows:
   version: 2
   integration:
