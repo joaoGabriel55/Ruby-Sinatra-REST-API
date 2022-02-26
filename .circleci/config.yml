@@ -15,6 +15,7 @@ commands:
       - run:
           name: Configure bundler
           command: |
+            sudo gem update --system
             echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
             source $BASH_ENV
             gem install bundler
@@ -47,7 +48,8 @@ jobs:
       - checkout
       - run:
           name: Test API
-          command: bundle exec rspec spec/
+          command: |
+            rspec spec/
 
 workflows:
   version: 2
