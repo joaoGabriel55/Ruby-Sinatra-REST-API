@@ -49,7 +49,7 @@ jobs:
           name: Test API
           command: |
             TESTFILES=$(circleci tests glob “spec/**/*_spec.rb” | circleci tests split)
-            bundle exec rspec — ${TESTFILES}
+            rspec — ${TESTFILES}
 
 workflows:
   version: 2
