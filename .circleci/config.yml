@@ -43,9 +43,7 @@ jobs:
     executor: default
     steps:
       - checkout
-      - run:
-          name: Test API
-          command: ~/rest_api rspec spec/
+      - ruby/rspec-test
 
 workflows:
   version: 2
