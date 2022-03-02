@@ -6,5 +6,5 @@ before do
 end
 
 get '/health-check' do
-  { message: 'Goibinha 123', version: '1.0' }.to_json
+  { message: 'Is alive guys!', version: '1.0' }.to_json
 end
