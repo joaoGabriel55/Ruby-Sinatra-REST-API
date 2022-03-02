@@ -1,7 +1,7 @@
-language: ruby
-cache:
-  - bundler
-before_script:
-  - bundle install --binstubs --jobs=3 --retry=3
-script:
-  - bundle exec rspec spec
+# language: ruby
+# cache:
+#   - bundler
+# before_script:
+#   - bundle install --binstubs --jobs=3 --retry=3
+# script:
+#   - bundle exec rspec spec
